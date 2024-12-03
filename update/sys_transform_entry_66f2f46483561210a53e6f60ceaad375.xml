@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry">
+    <sys_transform_entry action="INSERT_OR_UPDATE">
+        <choice_action>create</choice_action>
+        <coalesce>true</coalesce>
+        <coalesce_case_sensitive>false</coalesce_case_sensitive>
+        <coalesce_empty_fields>false</coalesce_empty_fields>
+        <date_format>MM/dd/yy</date_format>
+        <map display_value="Import Historic NeedIt Data">94af64ec83161210a53e6f60ceaad3e2</map>
+        <reference_value_field/>
+        <source_field>u_must_have_by</source_field>
+        <source_script><![CDATA[answer = (function transformEntry(source) {
+
+	// If the source data does not have a u_requested_for_email field, 
+  // create the target email address from the Requested for value.  Email addresses 
+  // have the format firstname.lastname@example.com.  Convert the u_requested_for 
+  // value to lowercase.  Replace the space with a . and concatenate with 
+  // @example.com
+  if(!("u_requested_for_email" in source)){
+    var name = source.u_requested_for.toLowerCase();
+    target.u_requested_for_email = name.replace(" ", ".") + "@example.com";
+  }
+
+})(source);]]></source_script>
+        <source_table>x_58872_needit_historic_needit_data</source_table>
+        <sys_class_name>sys_transform_entry</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-02 13:59:47</sys_created_on>
+        <sys_id>66f2f46483561210a53e6f60ceaad375</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>u_must_have_by</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_transform_entry_66f2f46483561210a53e6f60ceaad375</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-02 15:01:41</sys_updated_on>
+        <target_field>u_when_needed</target_field>
+        <target_table>x_58872_needit_needit</target_table>
+        <use_source_script>false</use_source_script>
+    </sys_transform_entry>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>66f2f46483561210a53e6f60ceaad375</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-02 14:50:00</sys_created_on>
+        <sys_id>c27e78e083961210a53e6f60ceaad371</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-02 14:50:00</sys_updated_on>
+        <table>sys_transform_entry</table>
+        <use_es_latest>false</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
